@@ -1,6 +1,6 @@
 import re  # 导入正则表达式模块
 import os  # 导入操作系统模块
-from selenium import webdriver  # 导入selenium模块中的webdriver类
+from check_with_requests import check
 
 # 读取txt文件内容=======================
 def read_txt_file(file_path):
@@ -17,7 +17,7 @@ def read_txt_file(file_path):
     return content
 
 # 输入文件路径
-file_path = input()
+file_path = input("请输入文件路径: ")
 
 # 古怪路径格式处理=======================
 # 去除首尾的引号
@@ -36,4 +36,11 @@ matches = re.findall(pattern, file_content)
 
 # 只输出匹配上的整个链接
 for match in matches:
-    print(match)
+    print(match, end=' ')
+    flag = check(match)
+    if flag:
+        print("Available online")
+    elif not flag:
+        print("Unavailable")
+    else:
+        print(flag)
