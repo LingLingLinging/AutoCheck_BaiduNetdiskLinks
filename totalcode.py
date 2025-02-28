@@ -111,3 +111,8 @@ for match in matches:
         print(f"【404404404404404404】\n\tNo such file in link : {match} \n(Time taken: {elapsed_time:.2f} seconds)")
     else:
         print(flag)
+
+
+    
+# 等待用户按下回车键再退出
+input("按下回车键退出...")
